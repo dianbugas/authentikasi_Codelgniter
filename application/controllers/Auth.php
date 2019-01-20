@@ -6,7 +6,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model');
+        //$this->load->model('user_model');
     }
 
     public function register()
@@ -20,15 +20,15 @@ class Auth extends CI_Controller
             $this->load->view('auth/register');
             $this->load->view('layouts/footer');
         } else {
-            $this->user_model->insert_user();//save data
-            $this->email->from('dianbugas@gmail.com', 'dian bugas');
-            $this->email->to($email);
-            $this->email->subject('register aplikasi auth local');
-            $this->email->message("
-                Klik untuk konfirmasi pendaftaran 
-                <a href='http://localhost/authentikasiCI/auth/verify/$email/$token'>Konfirmasi Email</a>
-            ");
-            $this->mail->
+            // $this->user_model->insert_user();//save data
+            // $this->email->from('dianbugas@gmail.com', 'dian bugas');
+            // $this->email->to($email);
+            // $this->email->subject('register aplikasi auth local');
+            // $this->email->message("
+            //     Klik untuk konfirmasi pendaftaran 
+            //     <a href='http://localhost/authentikasiCI/auth/verify/$email/$token'>Konfirmasi Email</a>
+            // ");
+            // $this->mail->
         }
     }
 
