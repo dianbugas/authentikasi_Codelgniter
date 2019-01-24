@@ -60,4 +60,24 @@ class Auth extends CI_Controller
         //redirect profil
         redirect('profile');
     }
+
+    public function login()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() === false) {
+            $this->load->view('layouts/header');
+            $this->load->view('auth/login');
+            $this->load->view('layouts/footer');
+        } else {
+
+            $user = $this->User_Model->insert_user($email, $this->input->post('email'));
+            //save is session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['logged_in'] = true;
+            //redirect profil
+            redirect('profile');
+        }
+    }
 }
