@@ -19,4 +19,20 @@ class User_Model extends CI_Model
         ];
         $this->db->insert('users', $data);
     }
+
+    public function get_user($key, $value)
+    {
+        $query = $this->db->get_where('users', array($key => $value));
+        if (!empty($query->row_array())) {
+            return $query->row_array();
+        }
+        return false;
+    }
+
+    public function update_role($user_id, $role_nr)
+    {
+        $data = array('role' => $role_nr);
+        $this->db->where('id', $user_id);
+        return $this->db->update('users', $data);
+    }
 }
