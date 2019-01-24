@@ -42,10 +42,10 @@ class Auth extends CI_Controller
 
     public function verify_register($email, $token)
     {
-        $user = $this->user_model->get_user('email', $email);
+        $user = $this->User_Model->get_user('email', $email);
     
         //cek email ada atau tidak
-        if (!user)
+        if (!$user)
             die('email not exists');
 
         if ($user['token'] !== $token)

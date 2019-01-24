@@ -35,4 +35,13 @@ class User_Model extends CI_Model
         $this->db->where('id', $user_id);
         return $this->db->update('users', $data);
     }
+
+    public function is_LoggedIn()
+    {
+        if (!isset($_SESSION['logged_in'])) {
+            return false;
+        }
+
+        return true;
+    }
 }
